@@ -1,0 +1,76 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<WebApplication1.Models.Pregunta>
+<!doctype html>
+<html>
+
+<body onload="cuenta();">
+    <div class="row">
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" id="alls">
+        <div class="col-sm-4">
+            <script language="javascript" src="~/Content/temporizador.js"></script>
+            <link href="~/Content/bootstrap.css" rel="stylesheet" />
+            <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+            <link href="~/Content/quiz.css" rel="stylesheet" />
+            <link href="~/Content/b1.css" rel="stylesheet" />
+            <script src="~/Content/quiz.js"></script>
+            <script src="~/Content/questions.js"></script>
+            <div>
+                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+
+                <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
+
+            </div>
+            <div id="quizContainer" class="container">
+
+                @foreach (var item in Model)
+                {
+                    <div id="contador" align="center" class="contador">
+                        @Html.DisplayFor(modelItem => item.contador, new { id = "contador" })
+                    </div>
+                    <h3 id="question" class="question" style="font-size:30px;color:#000000">
+                        @Html.DisplayFor(modelItem => item.pregunta)
+                    </h3>
+                                <label class="option">
+                                    <input type="radio" name="option" value="1">
+                                    @Html.DisplayFor(modelItem => item.opt1, new { id = "opt1" })
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="option" value="2">
+                                    @Html.DisplayFor(modelItem => item.opt2, new { id = "opt2" })
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="option" value="3">
+                                    @Html.DisplayFor(modelItem => item.opt3, new { id = "opt3" })
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="option" value="4">
+                                    @Html.DisplayFor(modelItem => item.opt4, new { id = "opt4" })
+                                </label>
+
+
+                }
+
+                <button id="nextButton" class="next-btn" onclick="loadNextQuestion()">Siguiente</button>
+            </div>
+            <div id="result" class="container result" style="display: none;color:#000000"></div>
+            <label id="Comprob" class="lbrs" style="display: none"></label>
+            <h1 id="hz" style="display: none"></h1>
+            <div style="display:none" id="img">
+                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:30%;margin-left:115%" />
+            </div>
+            <div style="display:none" id="imgs">
+                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:30%;margin-left:115%" />
+            </div>
+            <div id="results" class="container result" style="display: none;color:#000000"></div>
+
+        </div>
+        </div>
+
+</body>
+</html>
+

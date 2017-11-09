@@ -1,0 +1,22 @@
+﻿.btn-jg{
+    background-color:teal;
+    color:ghostwhite;
+    width:110%;
+    border:thin solid teal;
+    width:165%;
+    height:180%;
+    font-size:140%;
+    margin-left:-16%
+}
+body{
+    background-color:#ffffff;
+}
+.container {
+    background-color: #ffffff;
+}
+.cnt {
+    height: 10%;
+    width: 100%;
+    background-color: #ffffff;
+}
+

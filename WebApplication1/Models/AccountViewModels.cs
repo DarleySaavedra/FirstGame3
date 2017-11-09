@@ -6,8 +6,8 @@ namespace WebApplication1.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -39,19 +39,18 @@ namespace WebApplication1.Models
         public bool RememberMe { get; set; }
     }
 
-    public class ForgotViewModel
-    {
-        [Required]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
-    }
+    //public class ForgotViewModel
+    //{
+    //    [Required]
+    //    [Display(Name = "Correo electrónico")]
+    //    public string Email { get; set; }
+    //}
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,29 +63,11 @@ namespace WebApplication1.Models
 
     public class RegisterViewModel
     {
+        public int RegisterViewModelId { get; set; }
         [Required]
-        [EmailAddress]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmar contraseña")]
-        [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
-        public string ConfirmPassword { get; set; }
-    }
-
-    public class ResetPasswordViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
+        //[EmailAddress]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
@@ -94,19 +75,38 @@ namespace WebApplication1.Models
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmar contraseña")]
-        [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
-        public string ConfirmPassword { get; set; }
-
-        public string Code { get; set; }
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Confirmar contraseña")]
+        //[Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
+        //public string ConfirmPassword { get; set; }
     }
 
-    public class ForgotPasswordViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
-    }
+    //public class ResetPasswordViewModel
+    //{
+    //    [Required]
+    //    //[   Address]
+    //    [Display(Name = "Nombre")]
+    //    public string Nombre { get; set; }
+
+    //[Required]
+    //[StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+    //[DataType(DataType.Password)]
+    //[Display(Name = "Contraseña")]
+    //public string Password { get; set; }
+
+    //[DataType(DataType.Password)]
+    //[Display(Name = "Confirmar contraseña")]
+    //[Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
+    //public string ConfirmPassword { get; set; }
+
+    //public string Code { get; set; }
 }
+
+//public class ForgotPasswordViewModel
+//{
+//    [Required]
+//    [EmailAddress]
+//    [Display(Name = "Correo electrónico")]
+//    public string Email { get; set; }
+//}
+//}

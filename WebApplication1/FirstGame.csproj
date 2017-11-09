@@ -78,9 +78,17 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -197,25 +205,57 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MateController.cs" />
+    <Compile Include="Controllers\SubMenyController.cs" />
+    <Compile Include="Migrations\201711090741527_AddPregunta.cs" />
+    <Compile Include="Migrations\201711090741527_AddPregunta.Designer.cs">
+      <DependentUpon>201711090741527_AddPregunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EFContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711081853196_AddModel.cs" />
-    <Compile Include="Migrations\201711081853196_AddModel.Designer.cs">
-      <DependentUpon>201711081853196_AddModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Conexion.cs" />
+    <Compile Include="Repository\IPreguntaRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\PreguntaRepository.cs" />
+    <Compile Include="Servicios\IPreguntaServices.cs" />
+    <Compile Include="Servicios\PreguntaService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\15899.png" />
+    <Content Include="Content\aprobao.gif" />
+    <Content Include="Content\b1.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cs1.css" />
+    <Content Include="Content\elect.gif" />
+    <Content Include="Content\giphy.gif" />
+    <Content Include="Content\giphys.gif" />
+    <Content Include="Content\guepardo.png" />
+    <Content Include="Content\img_leyendo.png" />
+    <Content Include="Content\leon.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\PiggygifWeb.gif" />
+    <Content Include="Content\questions.js" />
+    <Content Include="Content\quiz.css" />
+    <Content Include="Content\quiz.js" />
+    <Content Include="Content\RedAnimationLoop.gif" />
+    <Content Include="Content\Red_happy.gif" />
+    <Content Include="Content\RED_THINKING_AWESOMENESS.png" />
+    <Content Include="Content\reprobado.gif" />
+    <Content Include="Content\Small-mario.png" />
+    <Content Include="Content\tigre.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -239,7 +279,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -273,6 +315,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Mate\Index.cshtml" />
+    <Content Include="Views\SubMeny\Index.cshtml" />
+    <Content Include="Views\Entrada\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,8 +331,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711081853196_AddModel.resx">
-      <DependentUpon>201711081853196_AddModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711090741527_AddPregunta.resx">
+      <DependentUpon>201711090741527_AddPregunta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
