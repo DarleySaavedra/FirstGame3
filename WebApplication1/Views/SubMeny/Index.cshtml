@@ -8,46 +8,48 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/submeny.css" />
     <link rel="stylesheet" href="~/Content/cs1.css" />
     <script type="text/javascript">
        function crecer(x) {
-           x.style.width = "52.5%";
+           x.style.width = "36%";
        }
 
        function normal(x) {
-           x.style.width = "51%";
+           x.style.width = "35%";
        }
 
        function crec(x) {
-           x.style.width = "46%";
+           x.style.width = "36%";
        }
 
        function nor(x) {
-           x.style.width = "44%";
+           x.style.width = "35%";
        }
     </script>
 </head>
 
-<body onload=" document.getElementById('navbar').style.display = 'none';" style="background-image:url('/Content/Red_happy.gif'); background-color:#ffffff">
+<body onload=" document.getElementById('navbar').style.display = 'none';" style="background-image:url('/Content/giphys.gif'); background-color:#ffffff">
     
-    <div class="container" style="border: 50px solid white; margin-top:10%">
+    <div class="container" id="container" style="margin-top:10%;">
 
-        <div style="background-color:white; float:right; width:40%; border:solid thin #000000">
-            <img onmouseover="crecer(this)" onclick="window.location.href='/Mate/Index'" onmouseout="normal(this)" src="~/Content/15899.png" width="50%" style="float:right; margin-top:2%" />
-            <h2 style="float:left; margin-top:28%; margin-left:5%; font-size:26px">MATEMATICA</h2>
-
+        <div id="mate" class="mate" onclick="window.location.href='/Mate/Index'" onmouseover="crecer(this)"  onmouseout="normal(this)">
+            <h2 id="mgmate" class="mgmate">MATEMATICA</h2>
+            <img src="~/Content/15899.png"id="imgmat" class="imgmat" />
         </div>
 
-        <img src="~/Content/PiggygifWeb.gif" width="18%" style="margin-top:6%; margin-left:2%" />
-
-
-        <div style="background-color:white; float:left; width:39%; border:solid thin #000000">
-            <img onmouseover="crec(this)" onclick="window.location.href='/Mate/Index'" onmouseout="nor(this)" src="~/Content/img_leyendo.png" width="44%" height="20%" style="float:left;margin-top:2%" />
-            <h2 style="float:right; margin-top:28%; margin-right:13%">LENGUAJE</h2>
-
+        <div id="comu" class="comu" onclick="window.location.href='/Comu/Index'" onmouseover="crec(this)"  onmouseout="nor(this)">
+            <h2 id="mgcomu" class="mgcomu">LENGUAJE</h2>
+            <img src="~/Content/img_leyendo.png" id="imgcom" class="imgcom"/>
         </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br>
 
+        <div id="imgcenter" class="imgcenter">
+            <img src="~/Content/PiggygifWeb.gif"id="imgmed" class="imgmed" />
+        </div>
+    </div>
+
+    <div style="background-color:white">
+        <br /><br /><br /><br /><br /><br />
     </div>
 </body>
 </html>

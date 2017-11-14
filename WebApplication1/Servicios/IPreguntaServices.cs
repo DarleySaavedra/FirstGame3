@@ -10,5 +10,7 @@ namespace WebApplication1.Servicios
     interface IPreguntaServices
     {
         List<Pregunta> ReadPreg();
+        List<Pregunta> GetPregsCurso(string curso);
+        int contar(Pregunta p);
     }
 }

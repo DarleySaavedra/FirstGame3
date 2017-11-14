@@ -14,5 +14,6 @@ namespace WebApplication1.Models
         public string opt3 { get; set; }
         public string opt4 { get; set; }
         public string contador { get; set; }
+        public string Respuesta { get; set; }
     }
 }

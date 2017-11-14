@@ -1,63 +1,162 @@
 ﻿@using WebApplication1.Models
 @model LoginViewModel
-@{
-    ViewBag.Title = "Iniciar sesión";
-}
 
 <h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use una cuenta local para iniciar sesión.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+<head>
+    <script>
+        function move() {
+            var elem = document.getElementById("id01");
+            var width = 100;
+            var id = setInterval(frame, 30);
+            elem.style.display = "";
 
+            function frame() {
+                if (width == 0) {
+                    document.getElementById("letra").innerHTML = "Bien :'v"
+                }
+
+                if (width < 1) {
+                    clearInterval(id);
+                } else {
+                    width = width - 4;
+
+                    elem.style.marginLeft = width + "%";
+
+                }
+
+
+            }
+        }
+
+        
+</script>
+    <script>
+        
+        function move1() {
+            var elem = document.getElementById("id01");
+            var width = 0;
+            var id = setInterval(frame, 30);
+            elem.style.display = "";
+
+            function frame() {
+                if (width == 100) {
+                    elem.style.display = "none";
+                }
+                if (width > 100) {
+                    clearInterval(id);
+                } else {
+                    width = width + 4;
+
+                    elem.style.marginLeft = width + "%";
+
+                }
+
+
+            }
+        }
+    </script>
+</head>
+<body style="background-image:url('/Content/giphys.gif'); background-color:white;">
+    <div class="row" style="background-color:white; margin-top:-5%">
+        <div class="col-md-8" style="margin-top:11%;position:relative" id="lg">
+            <section id="loginForm" style="margin-left:45%;width:80%">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <h4>Use una cuenta local para iniciar sesión.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
-                                </div>
+                        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                    </div>
+                  
+
+                    <div class="form-group" >
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
                             </div>
                         </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Iniciar sesión" class="btn btn-default" />
-                        </div>
                     </div>
-                    <p>
-                        @Html.ActionLink("Registrar como nuevo usuario", "Register")
-                    </p>
-                    @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                            </div>
+                        </div>
                         <p>
-                            @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                        </p>*@
-                    }
-</section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+                            <br /><br /><br /><br /><br /><br />
+                        </p>
+                        @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                            <p>
+                                @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                            </p>*@
+                }
+            </section>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" onclick="document.getElementById('id01').style.display = 'block'; move();" value="Se nuestro amigo" class="btn btn-default" />
+            </div>
+            
+        </div>
+        <div class="col-md-8" style="margin-top:0%; position:absolute;width:85.65%;background-color:white; display:none;" id="id01">
+            <span onclick="move1();" class="close" title="Close Modal">&times;</span>
+            <div class="row" id="alls" style="margin-left:35%; margin-top:10.5%">
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                                @Html.AntiForgeryToken()
+                                <div class="modal-header">
+                                  
+                                    <h4 class="modal-title" id="myModalLabel" style="color:black"><b>UNETE A NOSOTROS</b></h4>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="well">
+                                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Nombre, new { @class = "control-label" })
+                                                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+                                                    <span class="help-block"></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                    <span class="help-block"></span>
+                                                </div>
+                                                <input type="submit" class="btn btn-default btn-block" value="Registrarse" />
+                                                
+
+                                            </div>
+                                            <br /><br /><br /><br /><br />
+                                        </div>
+                                    </div>
+                              
+                            }
+                        </div>
+                  
+              
+            </div>
+
+            @*<div class="col-md-4">
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>*@
+        </div>
+</body>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -9,5 +9,6 @@ namespace WebApplication1.Repository
 {
     interface IPreguntaRepository : IRepository<Pregunta>
     {
+        List<Pregunta> PreguntaCurso(string curso);
     }
 }

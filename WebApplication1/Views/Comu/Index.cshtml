@@ -1,5 +1,7 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<WebApplication1.Models.Pregunta>
+    
+
 <!doctype html>
 <html>
 
@@ -9,30 +11,85 @@
     </div>
     <div class="row" id="alls">
         <div class="col-sm-4">
-            <script language="javascript" src="~/Content/temporizador.js"></script>
             <link href="~/Content/bootstrap.css" rel="stylesheet" />
             <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
             <link href="~/Content/quiz.css" rel="stylesheet" />
             <link href="~/Content/b1.css" rel="stylesheet" />
-            <script src="~/Content/quiz.js"></script>
-            <script src="~/Content/questions.js"></script>
+            @*<script src="~/Content/quiz.js"></script>*@
+           
             <div>
+                <div style="background-color:black" id="pgr">
+                    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+                    <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
+                </div>
                 
 
-                <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
-                
             </div>
             <div id="quizContainer" class="container">
-                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+
                 @foreach (var item in Model)
+
                 {
+                    
+                    <script >
+                        
+
+                        function sumar() {
+                            var score = 0;
+                            var answer = selectedOption.value;
+                            var selectedOption = document.querySelector('input[type=radio]:checked');
+                            var resp =@Html.DisplayFor(modelItem => item.Respuesta);
+                            if (answer == resp) {
+                                score = score + 2;
+                            }
+
+                            return score;
+                        }
+
+                        function ct() {
+
+                            var res = document.getElementById('result');
+                            var pgr = document.getElementById('pgr');
+                            var cont = document.getElementById('quizContainer');
+                            var img = document.getElementById('img');
+                            var imgs = document.getElementById('imgs');
+                            var results = document.getElementById('results');
+                            var selectedOption = document.querySelector('input[type=radio]:checked');
+
+                            if (!selectedOption) {
+                                alert('Por favor, elija una opción');
+                                return;
+                            }
+                            
+                            if (score > 10) {
+                                cont.style.display = 'none';
+                                pgr.style.display = 'none';
+                                document.getElementById('Comprob').innerHTML = 'Felicidades! Aprobó el curso';
+                                res.style.display = '';
+                                results.style.display = '';
+                                results.textContent = 'Saco' + score;
+                                img.style.display = '';
+                            }
+                            if(score<=10){
+                                cont.style.display = 'none';
+                                pgr.style.display = 'none';
+                                document.getElementById('Comprob').innerHTML = 'Lo sentimos:c';
+                                res.style.display = '';
+                                results.style.display = '';
+                                results.textContent = 'Saco ' + score;
+                                imgs.style.display = '';
+                            }
+
+                        }
+                        sumar();
+                    </script>
                     <div id="contador" align="center" class="contador">
                         @Html.DisplayFor(modelItem => item.contador, new { id = "contador" })
                     </div>
                     <script>
                         var c = document.getElementById('contador');
                         var sg = @Html.DisplayFor(modelItem => item.contador);
-
+                        
                         function cuenta() {
                             window.setInterval(
                                 function () {
@@ -45,26 +102,24 @@
                                         c.style.color = 'white';
                                     }
 
-                                    if (sg === 0) {
-                                        loadQuestion(++currentQuestion);
-                                        sg = questions[currentQuestion].contador;
-                                        return;
+                                    if (sg == 0) {
+                                        
                                     }
 
                                     c.innerHTML = sg;
                                     sg--;
                                 }, 1000);
                         }
-
                         cuenta();
                     </script>
+                    
                     <h3 id="question" class="question" style="font-size:30px;color:#000000">
                         @Html.DisplayFor(modelItem => item.pregunta)
                     </h3>
-                                <label class="option">
-                                    <input type="radio" name="option" value="1">
-                                    @Html.DisplayFor(modelItem => item.opt1, new { id = "opt1" })
-                                </label>
+                    <label class="option">
+                        <input type="radio" name="option" value="1">
+                        @Html.DisplayFor(modelItem => item.opt1, new { id = "opt1" })
+                    </label>
 
                                 <label class="option">
                                     <input type="radio" name="option" value="2">
@@ -84,7 +139,7 @@
 
                 }
 
-                <button id="nextButton" class="next-btn" onclick="document.getElementById('quizContainer').style.display = 'none'; document.getElementById('img').style.display = '';">Siguiente</button>
+                <button id="nextButton" class="next-btn" onclick="ct();">Siguiente</button>
             </div>
             <div id="result" class="container result" style="display: none;color:#000000"></div>
             <label id="Comprob" class="lbrs" style="display: none"></label>
@@ -98,8 +153,7 @@
             <div id="results" class="container result" style="display: none;color:#000000"></div>
 
         </div>
-        </div>
+    </div>
 
 </body>
 </html>
-

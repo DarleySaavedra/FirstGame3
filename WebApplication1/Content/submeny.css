@@ -1,0 +1,55 @@
+﻿.container {
+    width: 94%;
+}
+
+.mate {
+    float: right;
+    width: 35%;
+    margin-left: 8%;
+    border:solid #332f86;
+    border-radius: 50% 50% 50% 50%;
+}
+.mgmate {
+    margin-top: 7%;
+    margin-left: 26.5%;
+}
+
+.imgmat {
+    margin-top: 10.5%;
+    margin-left: 29%;
+    width: 55.6%;
+}
+
+.comu {
+    float: left;
+    width: 35%;
+    border: thin solid black;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.imgcom {
+    margin-top: 12%;
+    margin-left: 29%;
+    width: 47.6%;
+}
+
+.mgcomu {
+    margin-top: 7%;
+    margin-left: 30%;
+    font-size: 200%;
+    width: 35%;
+}
+
+.imgcenter {
+    width: 20%;
+    margin-left: 41%;
+    margin-top: 3%;
+}
+
+.imgmed {
+    margin-top: -149%;
+    width:100%;
+}
+
+
+

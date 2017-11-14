@@ -19,5 +19,21 @@ namespace WebApplication1.Servicios
         {
             return preg.Reader();
         }
+
+        public int contar(Pregunta p)
+        {
+            var s = int.Parse(p.contador);
+            while (s != 0)
+            {
+                s--;               
+            }
+            return s;
+            
+        }
+
+        public List<Pregunta> GetPregsCurso(string curso)
+        {
+            return preg.PreguntaCurso(curso);
+        }
     }
 }
