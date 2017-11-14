@@ -18,7 +18,7 @@
             @*<script src="~/Content/quiz.js"></script>*@
            
             <div>
-                <div style="background-color:black" id="pgr">
+                <div style="color:black" id="pgr">
                     @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
                     <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
                 </div>
@@ -32,35 +32,31 @@
                 {
                     
                     <script >
-                        
-
-                        function sumar() {
-                            var score = 0;
-                            var answer = selectedOption.value;
-                            var selectedOption = document.querySelector('input[type=radio]:checked');
-                            var resp =@Html.DisplayFor(modelItem => item.Respuesta);
-                            if (answer == resp) {
-                                score = score + 2;
-                            }
-
-                            return score;
-                        }
 
                         function ct() {
-
+                            var score = 0;
                             var res = document.getElementById('result');
                             var pgr = document.getElementById('pgr');
                             var cont = document.getElementById('quizContainer');
                             var img = document.getElementById('img');
                             var imgs = document.getElementById('imgs');
                             var results = document.getElementById('results');
+                            
+                            var resp =@Html.DisplayFor(modelItem => item.Respuesta);
+
                             var selectedOption = document.querySelector('input[type=radio]:checked');
 
                             if (!selectedOption) {
                                 alert('Por favor, elija una opción');
                                 return;
                             }
-                            
+                            var answer = selectedOption.value;
+                            if (answer == resp) {
+                                score = score + 2;
+                            }
+
+                            selectedOption.checked = false;
+
                             if (score > 10) {
                                 cont.style.display = 'none';
                                 pgr.style.display = 'none';
@@ -81,7 +77,6 @@
                             }
 
                         }
-                        sumar();
                     </script>
                     <div id="contador" align="center" class="contador">
                         @Html.DisplayFor(modelItem => item.contador, new { id = "contador" })
