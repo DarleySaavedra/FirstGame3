@@ -30,7 +30,7 @@
 
                 {
                     <script >
-                        var id = 0;
+                       var id = 0;
                         var score = 0
                         function ct() {
                             var res = document.getElementById('result');
@@ -43,7 +43,7 @@
                             var nextButton = document.getElementById('nextButton');
                             var selectedOption = document.querySelector('input[type=radio]:checked');
                             var com = document.getElementById('Comprob');
-
+                            var vl = document.getElementById('vl');
                             if (!selectedOption) {
                                 alert('Por favor, elija una opción');
                                 return;
@@ -53,29 +53,33 @@
                             if (answer == resp) {
                                 score = score + 2;
                             }
-                            
+
                             selectedOption.checked = false;
                             id++;
-                            if (id === 4) {
+                            if (id === 8) {
                                 nextButton.textContent = 'Finalizar';
                             }
-                            if (id === 5) {
+                            if (id === 9) {
+                                cont.style.display = 'none';
+                                pgr.style.display = 'none';
+                                res.style.display = '';
+                                results.style.display = '';
+                                res.style.display = '';
+                                results.style.display = '';
+                                com.style.display = '';
+                                vl.style.display = '';
                                 if (score > 10) {
-                                    cont.style.display = 'none';
-                                    pgr.style.display = 'none';
-                                    com.textContent = 'Felicidades! Aprobó el curso';
-                                    res.style.display = '';
-                                    results.style.display = '';
-                                    results.textContent = 'Saco' + score;
+
+                                    com.textContent = 'Felicidades!';
+
+                                    results.textContent = 'Saco ' + score;
                                     img.style.display = '';
                                 }
 
                                 if (score <= 10) {
-                                    cont.style.display = 'none';
-                                    pgr.style.display = 'none';
-                                    com.textContent = 'Lo sentimos:c';
-                                    res.style.display = '';
-                                    results.style.display = '';
+
+                                    com.textContent = 'Lo sentimos';
+
                                     results.textContent = 'Saco ' + score;
                                     imgs.style.display = '';
                                 }
@@ -141,16 +145,19 @@
                 <button id="nextButton" class="next-btn" onclick="ct();">Siguiente</button>
             </div>
             <div id="result" class="container result" style="display: none;color:#000000"></div>
-            <label id="Comprob" class="lbrs" style="display: none"></label>
+            <label id="Comprob" class="container result" style="display: none; color:#000000; margin-top:-100%"></label>
             <h1 id="hz" style="display: none"></h1>
             <div style="display:none" id="img">
-                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:30%;margin-left:115%" />
+                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:10%;margin-left:115%" />
             </div>
             <div style="display:none" id="imgs">
-                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:30%;margin-left:115%" />
+                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:10%;margin-left:115%" />
             </div>
             <div id="results" class="container result" style="display: none;color:#000000"></div>
-
+            <div id="vl" style="display:none; margin-top:10%; width:100%">
+                <button id="nextButton" class="next-btn" style="float:left" onclick="location.href='/SubMeny/Index'">Volver</button>
+                <button id="nextButton" class="next-btn" style="float:right" onclick="location.href='/Comu/Index'">Reintentar</button>
+            </div>
         </div>
     </div>
 

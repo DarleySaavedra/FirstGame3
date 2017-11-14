@@ -18,14 +18,71 @@
             <script src="~/Content/questions.js"></script>
             <div>
                 
-
-                <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
+                <div id="pgr">
+                    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+                    <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
+                </div>
                 
             </div>
             <div id="quizContainer" class="container">
-                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
                 @foreach (var item in Model)
                 {
+                    <script>
+                        var id = 0;
+                        var score = 0
+                        function ct() {
+                            var res = document.getElementById('result');
+                            var pgr = document.getElementById('pgr');
+                            var cont = document.getElementById('quizContainer');
+                            var img = document.getElementById('img');
+                            var imgs = document.getElementById('imgs');
+                            var results = document.getElementById('results');
+                            var resp =@Html.DisplayFor(modelItem => item.Respuesta);
+                            var nextButton = document.getElementById('nextButton');
+                            var selectedOption = document.querySelector('input[type=radio]:checked');
+                            var com = document.getElementById('Comprob');
+
+                            if (!selectedOption) {
+                                alert('Por favor, elija una opción');
+                                return;
+                            }
+
+                            var answer = selectedOption.value;
+                            if (answer == resp) {
+                                score = score + 2;
+                            }
+
+                            selectedOption.checked = false;
+                            id++;
+                            if (id === 8) {
+                                nextButton.textContent = 'Finalizar';
+                            }
+                            if (id === 9) {
+                                cont.style.display = 'none';
+                                pgr.style.display = 'none';
+                                res.style.display = '';
+                                results.style.display = '';
+                                res.style.display = '';
+                                results.style.display = '';
+                                com.style.display = '';
+                                if (score > 10) {
+                                    
+                                    com.textContent = 'Felicidades!';
+                                    
+                                    results.textContent = 'Saco ' + score;
+                                    img.style.display = '';
+                                }
+
+                                if (score <= 10) {
+                                    
+                                    com.textContent = 'Lo sentimos';
+                                    
+                                    results.textContent = 'Saco ' + score;
+                                    imgs.style.display = '';
+                                }
+                            }
+                        }
+                    </script>
                     <div id="contador" align="center" class="contador">
                         @Html.DisplayFor(modelItem => item.contador, new { id = "contador" })
                     </div>
@@ -84,16 +141,16 @@
 
                 }
 
-                <button id="nextButton" class="next-btn" onclick="document.getElementById('quizContainer').style.display = 'none'; document.getElementById('img').style.display = '';">Siguiente</button>
+                <button id="nextButton" class="next-btn" onclick="ct();">Siguiente</button>
             </div>
             <div id="result" class="container result" style="display: none;color:#000000"></div>
-            <label id="Comprob" class="lbrs" style="display: none"></label>
+            <label id="Comprob" class="container result" style="display: none; color:#000000; margin-top:-80%"></label>
             <h1 id="hz" style="display: none"></h1>
             <div style="display:none" id="img">
-                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:30%;margin-left:115%" />
+                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:20%;margin-left:115%" />
             </div>
             <div style="display:none" id="imgs">
-                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:30%;margin-left:115%" />
+                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:20%;margin-left:115%" />
             </div>
             <div id="results" class="container result" style="display: none;color:#000000"></div>
 
