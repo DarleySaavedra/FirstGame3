@@ -15,67 +15,71 @@
             <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
             <link href="~/Content/quiz.css" rel="stylesheet" />
             <link href="~/Content/b1.css" rel="stylesheet" />
-            @*<script src="~/Content/quiz.js"></script>*@
            
             <div>
-                <div style="color:black" id="pgr">
+                <div id="pgr">
                     @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
                     <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
                 </div>
-                
-
             </div>
+            
+            
             <div id="quizContainer" class="container">
 
                 @foreach (var item in Model)
 
                 {
-                    
                     <script >
-
+                        var id = 0;
+                        var score = 0
                         function ct() {
-                            var score = 0;
                             var res = document.getElementById('result');
                             var pgr = document.getElementById('pgr');
                             var cont = document.getElementById('quizContainer');
                             var img = document.getElementById('img');
                             var imgs = document.getElementById('imgs');
                             var results = document.getElementById('results');
-                            
                             var resp =@Html.DisplayFor(modelItem => item.Respuesta);
-
+                            var nextButton = document.getElementById('nextButton');
                             var selectedOption = document.querySelector('input[type=radio]:checked');
+                            var com = document.getElementById('Comprob');
 
                             if (!selectedOption) {
                                 alert('Por favor, elija una opción');
                                 return;
                             }
+
                             var answer = selectedOption.value;
                             if (answer == resp) {
                                 score = score + 2;
                             }
-
+                            
                             selectedOption.checked = false;
-
-                            if (score > 10) {
-                                cont.style.display = 'none';
-                                pgr.style.display = 'none';
-                                document.getElementById('Comprob').innerHTML = 'Felicidades! Aprobó el curso';
-                                res.style.display = '';
-                                results.style.display = '';
-                                results.textContent = 'Saco' + score;
-                                img.style.display = '';
+                            id++;
+                            if (id === 4) {
+                                nextButton.textContent = 'Finalizar';
                             }
-                            if(score<=10){
-                                cont.style.display = 'none';
-                                pgr.style.display = 'none';
-                                document.getElementById('Comprob').innerHTML = 'Lo sentimos:c';
-                                res.style.display = '';
-                                results.style.display = '';
-                                results.textContent = 'Saco ' + score;
-                                imgs.style.display = '';
-                            }
+                            if (id === 5) {
+                                if (score > 10) {
+                                    cont.style.display = 'none';
+                                    pgr.style.display = 'none';
+                                    com.textContent = 'Felicidades! Aprobó el curso';
+                                    res.style.display = '';
+                                    results.style.display = '';
+                                    results.textContent = 'Saco' + score;
+                                    img.style.display = '';
+                                }
 
+                                if (score <= 10) {
+                                    cont.style.display = 'none';
+                                    pgr.style.display = 'none';
+                                    com.textContent = 'Lo sentimos:c';
+                                    res.style.display = '';
+                                    results.style.display = '';
+                                    results.textContent = 'Saco ' + score;
+                                    imgs.style.display = '';
+                                }
+                            }
                         }
                     </script>
                     <div id="contador" align="center" class="contador">

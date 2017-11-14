@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         }
         // GET: Mate
         public ActionResult Index(int? pagina)
-        {
+        {            
             string curso = "Comunicacion";
             int pagtam = 1;
             int numpag = pagina ?? 1;
