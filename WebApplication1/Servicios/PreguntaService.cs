@@ -20,15 +20,9 @@ namespace WebApplication1.Servicios
             return preg.Reader();
         }
 
-        public int contar(Pregunta p)
+        public int contar(int p=0)
         {
-            var s = int.Parse(p.contador);
-            while (s != 0)
-            {
-                s--;               
-            }
-            return s;
-            
+            return p++;
         }
 
         public List<Pregunta> GetPregsCurso(string curso)

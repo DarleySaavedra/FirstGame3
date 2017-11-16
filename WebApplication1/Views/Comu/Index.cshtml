@@ -1,11 +1,11 @@
-﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<WebApplication1.Models.Pregunta>
-    
-
+﻿@model PagedList.IPagedList<WebApplication1.Models.Pregunta>
+@using WebApplication1.Models;
+@using WebApplication1.Servicios;
+@using PagedList.Mvc;
 <!doctype html>
 <html>
 
-<body>
+<body onload="sum();">
     <div class="row">
         <div class="col-sm-4"></div>
     </div>
@@ -15,22 +15,21 @@
             <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
             <link href="~/Content/quiz.css" rel="stylesheet" />
             <link href="~/Content/b1.css" rel="stylesheet" />
-           
             <div>
-                <div id="pgr">
-                    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
-                    <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
-                </div>
+
             </div>
-            
-            
-            <div id="quizContainer" class="container">
 
-                @foreach (var item in Model)
+            <div id="pgr">
+                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+                <h5 style="color:black">Pregunta @Model.PageNumber de @Model.PageCount</h5>
+            </div>
 
-                {
-                    <script >
-                       var id = 0;
+        
+        <div id="quizContainer" class="container">
+            @foreach (var item in Model)
+            {
+                <script>
+                        var id = 0;
                         var score = 0
                         function ct() {
                             var res = document.getElementById('result');
@@ -43,7 +42,7 @@
                             var nextButton = document.getElementById('nextButton');
                             var selectedOption = document.querySelector('input[type=radio]:checked');
                             var com = document.getElementById('Comprob');
-                            var vl = document.getElementById('vl');
+
                             if (!selectedOption) {
                                 alert('Por favor, elija una opción');
                                 return;
@@ -55,11 +54,13 @@
                             }
 
                             selectedOption.checked = false;
+                            
                             id++;
-                            if (id === 8) {
+                            
+                            if (id === 9) {
                                 nextButton.textContent = 'Finalizar';
                             }
-                            if (id === 9) {
+                            if (id === 10) {
                                 cont.style.display = 'none';
                                 pgr.style.display = 'none';
                                 res.style.display = '';
@@ -67,7 +68,6 @@
                                 res.style.display = '';
                                 results.style.display = '';
                                 com.style.display = '';
-                                vl.style.display = '';
                                 if (score > 10) {
 
                                     com.textContent = 'Felicidades!';
@@ -84,15 +84,16 @@
                                     imgs.style.display = '';
                                 }
                             }
+                            return id;
                         }
-                    </script>
+                </script>
                     <div id="contador" align="center" class="contador">
                         @Html.DisplayFor(modelItem => item.contador, new { id = "contador" })
                     </div>
                     <script>
                         var c = document.getElementById('contador');
                         var sg = @Html.DisplayFor(modelItem => item.contador);
-                        
+
                         function cuenta() {
                             window.setInterval(
                                 function () {
@@ -105,17 +106,19 @@
                                         c.style.color = 'white';
                                     }
 
-                                    if (sg == 0) {
-                                        
+                                    if (sg === 0) {
+                                        loadQuestion(++currentQuestion);
+                                        sg = questions[currentQuestion].contador;
+                                        return;
                                     }
 
                                     c.innerHTML = sg;
                                     sg--;
                                 }, 1000);
                         }
+
                         cuenta();
                     </script>
-                    
                     <h3 id="question" class="question" style="font-size:30px;color:#000000">
                         @Html.DisplayFor(modelItem => item.pregunta)
                     </h3>
@@ -140,17 +143,22 @@
                                 </label>
 
 
-                }
-
+            }
+            <form method="post">
+                <input type="number" />
                 <button id="nextButton" class="next-btn" onclick="ct();">Siguiente</button>
-            </div>
+            </form>
+        </div>
+
+
+
             <div id="result" class="container result" style="display: none;color:#000000"></div>
             <label id="Comprob" class="container result" style="display: none; color:#000000; margin-top:-100%"></label>
             <h1 id="hz" style="display: none"></h1>
             <div style="display:none" id="img">
                 <img src="~/Content/aprobao.gif" width="70%" style="margin-top:10%;margin-left:115%" />
             </div>
-            <div style="display:none" id="imgs">
+            <div style="display: none" id="imgs">
                 <img src="~/Content/reprobado.gif" width="70%" style="margin-top:10%;margin-left:115%" />
             </div>
             <div id="results" class="container result" style="display: none;color:#000000"></div>
@@ -160,6 +168,6 @@
             </div>
         </div>
     </div>
-
+    </div>
 </body>
 </html>

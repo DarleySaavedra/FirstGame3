@@ -7,10 +7,10 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Servicios
 {
-    interface IPreguntaServices
+    public interface IPreguntaServices
     {
         List<Pregunta> ReadPreg();
         List<Pregunta> GetPregsCurso(string curso);
-        int contar(Pregunta p);
+        int contar(int p);
     }
 }

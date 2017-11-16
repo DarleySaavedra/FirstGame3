@@ -1,4 +1,5 @@
-﻿var currentQuestion = 0;
+﻿
+var currentQuestion = 0;
 var score = 0;
 var totQuestions = questions.length;
 
@@ -16,6 +17,7 @@ var q = questions[currentQuestion];
 var sg;
 
 function loadQuestion(questionIndex) {
+    
     var q = questions[questionIndex];
     questionEl.textContent = (questionIndex + 1) + '.' + q.question;
     opt1.textContent = q.option1;
