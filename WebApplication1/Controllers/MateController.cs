@@ -1,30 +1,44 @@
-﻿using WebApplication1.Servicios;
-using PagedList;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using WebApplication1.Models;
+using WebApplication1.Servicios;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class MateController : Controller
     {
         IPreguntaServices pregres;
-
+        
+        
         public MateController()
         {
             pregres = new PreguntaService();
         }
-        // GET: Mate
-        public ActionResult Index(int? pagina)
+
+        
+        public ActionResult Index(int? idx, int? score)
         {
+            if (idx == null)
+            {
+                idx = 0;
+            }
+            if (score == null)
+            {
+                score = 0;
+            }
+            ViewBag.dx = idx;
+            ViewBag.score = score;
             string curso = "Matematica";
-            int pagtam = 1;
-            int numpag = pagina ?? 1;
             var list = pregres.GetPregsCurso(curso);
-            return View(list.ToPagedList(numpag, pagtam));
+            var lt = list.ElementAt((int)idx);
+            return View(lt);
         }
 
     }

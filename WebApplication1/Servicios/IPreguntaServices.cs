@@ -11,6 +11,6 @@ namespace WebApplication1.Servicios
     {
         List<Pregunta> ReadPreg();
         List<Pregunta> GetPregsCurso(string curso);
-        int contar(int p);
+        List<Pregunta> GetPregId(string curso, int id);
     }
 }

@@ -214,9 +214,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MateController.cs" />
     <Compile Include="Controllers\SubMenyController.cs" />
-    <Compile Include="Migrations\201711090741527_AddPregunta.cs" />
-    <Compile Include="Migrations\201711090741527_AddPregunta.Designer.cs">
-      <DependentUpon>201711090741527_AddPregunta.cs</DependentUpon>
+    <Compile Include="Migrations\201711170609464_newMigration.cs" />
+    <Compile Include="Migrations\201711170609464_newMigration.Designer.cs">
+      <DependentUpon>201711170609464_newMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EFContext.cs" />
@@ -251,9 +251,7 @@
     <Content Include="Content\leon.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\PiggygifWeb.gif" />
-    <Content Include="Content\questions.js" />
     <Content Include="Content\quiz.css" />
-    <Content Include="Content\quiz.js" />
     <Content Include="Content\RedAnimationLoop.gif" />
     <Content Include="Content\Red_happy.gif" />
     <Content Include="Content\RED_THINKING_AWESOMENESS.png" />
@@ -339,8 +337,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711090741527_AddPregunta.resx">
-      <DependentUpon>201711090741527_AddPregunta.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711170609464_newMigration.resx">
+      <DependentUpon>201711170609464_newMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

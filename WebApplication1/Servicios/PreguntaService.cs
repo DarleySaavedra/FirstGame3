@@ -29,5 +29,10 @@ namespace WebApplication1.Servicios
         {
             return preg.PreguntaCurso(curso);
         }
+        public List<Pregunta> GetPregId(string curso,int id)
+        {
+            return preg.PreguntaId(curso,id);
+        }
+
     }
 }
