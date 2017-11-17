@@ -236,9 +236,6 @@ button:hover + div#content {
     }
 }
 
-
-
-
 .question {
     padding: 20px;
     font-size: 20px;
@@ -261,7 +258,7 @@ button:hover + div#content {
 }
 
     .option:hover {
-        background: #595858;
+        background: #1fff5a;
         color: #ffffff;
     }
 
@@ -290,7 +287,7 @@ button:hover + div#content {
 }
 
 .option input:checked .option {
-    background: #080380;
+    background: #1fff5a;
     color: #000;
 }
 

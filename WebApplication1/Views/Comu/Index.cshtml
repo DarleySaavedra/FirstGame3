@@ -4,8 +4,10 @@
 <html>
 
 <body>
-
-    <div class="row">
+    <audio loop autoplay>
+        <source src="~/Content/4204_147BPM_undefinedmin.wav" />
+    </audio>
+    <div class="row" style="margin-top:10%">
         <div class="col-sm-4"></div>
     </div>
     <div class="row" id="alls">
@@ -13,23 +15,20 @@
             <script language="javascript" src="~/Content/temporizador.js"></script>
             <link href="~/Content/bootstrap.css" rel="stylesheet" />
             <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-            <link href="~/Content/quiz.css" rel="stylesheet" />
             <link href="~/Content/b1.css" rel="stylesheet" />
-            <script src="~/Content/quiz.js"></script>
-            <script src="~/Content/questions.js"></script>
             <div>
 
             </div>
             <div id="quizContainer" class="container">
                 <script>
                    function loadnext() {
-                       var res = document.getElementById('result');
                             var cont = document.getElementById('quizContainer');
                             var img = document.getElementById('img');
                             var imgs = document.getElementById('imgs');
                             var results = document.getElementById('results');
                             var nextButton = document.getElementById('nextButton');
                             var com = document.getElementById('Comprob');
+                            var pds = document.getElementById('pds');
                        var id = @ViewBag.dx;
                        var sc =@ViewBag.score;
                        id++;
@@ -39,17 +38,14 @@
                        }
                        if (id === 10) {
                                 cont.style.display = 'none';
-
-                                res.style.display = '';
-                                results.style.display = '';
-                                res.style.display = '';
                                 results.style.display = '';
                                 com.style.display = '';
+                                pds.style.display = '';
                                 if (score > 10) {
 
                                     com.textContent = 'Felicidades!';
 
-                                    results.textContent = 'Saco ' + @ViewBag.score;
+                                    results.textContent = 'Saco ' + score;
                                     img.style.display = '';
                                 }
 
@@ -57,7 +53,7 @@
 
                                     com.textContent = 'Lo sentimos';
 
-                                    results.textContent = 'Saco ' + @ViewBag.score;
+                                    results.textContent = 'Saco ' + score;
                                     imgs.style.display = '';
                                 }
                             }
@@ -69,9 +65,9 @@
                         var score = 0
                         var sc=@ViewBag.score;
                         function ct() {
-                            var res = document.getElementById('result');
                             var cont = document.getElementById('quizContainer');
                             var img = document.getElementById('img');
+                            var pds = document.getElementById('pds');
                             var imgs = document.getElementById('imgs');
                             var results = document.getElementById('results');
                             var resp =@Html.DisplayFor(model => Model.Respuesta);
@@ -102,18 +98,17 @@
                                 nextButton.textContent = 'Finalizar';
                             }
                             if (id === 10) {
+                                
                                 cont.style.display = 'none';
-
-                                res.style.display = '';
-                                results.style.display = '';
-                                res.style.display = '';
+                                
                                 results.style.display = '';
                                 com.style.display = '';
+                                pds.style.display = '';
                                 if (score > 10) {
 
                                     com.textContent = 'Felicidades!';
 
-                                    results.textContent = 'Saco ' + @ViewBag.score;
+                                    results.textContent = 'Sacó ' + score;
                                     img.style.display = '';
                                 }
 
@@ -121,7 +116,7 @@
 
                                     com.textContent = 'Lo sentimos';
 
-                                    results.textContent = 'Saco ' + @ViewBag.score;
+                                    results.textContent = 'Sacó ' + score;
                                     imgs.style.display = '';
                                 }
                             }
@@ -157,10 +152,10 @@
 
                         cuenta();
                 </script>
-                <h3 id="question" class="question" style="font-size:30px;color:#000000">
+                <h3 id="question" class="question" style="font-size:30px;color:#000000; background-color:#2bde90">
                     @Html.DisplayFor(model => Model.pregunta)
                 </h3>
-                <label class="option">
+                <label class="option" >
                     <input type="radio" name="option" value="1">
                     @Html.DisplayFor(model => Model.opt1, new { id = "opt1" })
                 </label>
@@ -179,28 +174,25 @@
                     <input type="radio" name="option" value="4">
                     @Html.DisplayFor(model => Model.opt4, new { id = "opt4" })
                 </label>
-
-
-
-
                 <button id="nextButton" class="next-btn" onclick="ct();">Siguiente</button>
             </div>
-            <div id="result" class="container result" style="display: none;color:#000000"></div>
-            <label id="Comprob" class="container result" style="display: none; color:#000000; margin-top:-80%"></label>
-            <h1 id="hz" style="display: none"></h1>
-            <div style="display:none" id="img">
-                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:20%;margin-left:115%" />
-            </div>
-            <div style="display:none" id="imgs">
-                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:20%;margin-left:115%" />
-            </div>
-            <div id="results" class="container result" style="display: none;color:#000000">
-                <button id="nextButton" class="next-btn" style="float:left" onclick="location.href='/SubMeny/Index'">Volver</button>
-                <button id="nextButton" class="next-btn" style="float:right" onclick="location.href='/Comu/Index'">Reintentar</button>
-            </div>
-
-        </div>
-    </div>
+            
+                    
+                    <label id="Comprob" class="container result" style="display: none; color:#000000; margin-top:-60%"></label>
+                    <div style="display:none" id="img">
+                        <img src="~/Content/aprobao.gif" width="70%" style="margin-top:2.5%;margin-left:115%" />
+                    </div>
+                    <div style="display:none" id="imgs">
+                        <img src="~/Content/reprobado.gif" width="70%" style="margin-top:2.5%;margin-left:115%" />
+                    </div>
+                    <div id="results" class="container result" style="display: none;color:#000000;"></div>
+                    <div id="pds" style="display:none;">
+                        <button id="nextButton" class="next-btn" style="float:left;" onclick="location.href='/SubMeny/Index'">Volver</button>
+                        <button id="nextButton" class="next-btn" style="float:right;" onclick="location.href='/Comu/Index'">Reintentar</button>
+                    </div>
+                    </div>
+                </div>
+                
 
 </body>
 </html>

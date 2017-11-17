@@ -1,7 +1,6 @@
 ﻿@using WebApplication1.Models
 @model LoginViewModel
 
-<h2>@ViewBag.Title.</h2>
 <head>
     <script>
         function move() {
@@ -57,13 +56,16 @@
     </script>
 </head>
 <body style="background-image:url('/Content/giphys.gif'); background-color:white;">
-    <div class="row" style="background-color:white; margin-top:-5%">
+    <audio loop autoplay>
+        <source src="~/Content/4204_147BPM_undefinedmin.wav" />
+    </audio>
+    <div class="row" style="background-color:white; margin-top:1.5%">
         <div class="col-md-8" style="margin-top:11%;position:relative" id="lg">
             <section id="loginForm" style="margin-left:45%;width:80%">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                     @Html.AntiForgeryToken()
-                    <h4>Use una cuenta local para iniciar sesión.</h4>
+                    <h4 style="margin-left:28%">A comenzar a jugar</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -104,13 +106,15 @@
                             </p>*@
                 }
             </section>
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-10" style="margin-top:-13%; margin-left:63%">
                 <input type="submit" onclick="document.getElementById('id01').style.display = 'block'; move();" value="Se nuestro amigo" class="btn btn-default" />
             </div>
             
         </div>
         <div class="col-md-8" style="margin-top:0%; position:absolute;width:85.65%;background-color:white; display:none;" id="id01">
-            <span onclick="move1();" class="close" title="Close Modal">&times;</span>
+            
+                <span onclick="move1();" class="close" style="margin-left:15%;margin-top:1.5%; width:10%" title="Close Modal">&times;</span>
+           
             <div class="row" id="alls" style="margin-left:35%; margin-top:10.5%">
                             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -138,7 +142,7 @@
                                                 
 
                                             </div>
-                                            <br /><br /><br /><br /><br />
+                                            <br /><br /><br />
                                         </div>
                                     </div>
                               

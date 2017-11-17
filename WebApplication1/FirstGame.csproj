@@ -238,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\15899.png" />
+    <Content Include="Content\4204_147BPM_undefinedmin.wav" />
     <Content Include="Content\aprobao.gif" />
     <Content Include="Content\b1.css" />
     <Content Include="Content\bootstrap.css" />
