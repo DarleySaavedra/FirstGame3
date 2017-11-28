@@ -11,7 +11,7 @@
         public class EFContext : DbContext
         {
             public DbSet<Pregunta> Pregunta { get; set; }
-        public DbSet<RegisterViewModel> Register { get; set; }
+            public DbSet<RegisterViewModel> Register { get; set; }
 
 
         public EFContext()

@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace WebApplication1.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ComuController : Controller
     {
         
@@ -46,14 +46,14 @@ namespace WebApplication1.Controllers
         //    }
         //);
         //}
-        
-        public ActionResult Index(int? idx,int? score)
+      
+        public async Task<ActionResult> Index(int?idx,int? score)
         {
             if (idx == null)
             {
                 idx = 0;
             }
-            if(score == null)
+            if (score == null)
             {
                 score = 0;
             }

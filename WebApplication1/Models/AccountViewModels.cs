@@ -75,6 +75,8 @@ namespace WebApplication1.Models
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
+        public int? score { get; set; }
+
         //[DataType(DataType.Password)]
         //[Display(Name = "Confirmar contraseña")]
         //[Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]

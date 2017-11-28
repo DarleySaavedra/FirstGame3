@@ -214,9 +214,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MateController.cs" />
     <Compile Include="Controllers\SubMenyController.cs" />
-    <Compile Include="Migrations\201711170609464_newMigration.cs" />
-    <Compile Include="Migrations\201711170609464_newMigration.Designer.cs">
-      <DependentUpon>201711170609464_newMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201711200626075_NewMigration.cs" />
+    <Compile Include="Migrations\201711200626075_NewMigration.Designer.cs">
+      <DependentUpon>201711200626075_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EFContext.cs" />
@@ -231,9 +231,13 @@
     <Compile Include="Repository\Conexion.cs" />
     <Compile Include="Repository\IPreguntaRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\PreguntaRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Servicios\IPreguntaServices.cs" />
+    <Compile Include="Servicios\IUserServices.cs" />
     <Compile Include="Servicios\PreguntaService.cs" />
+    <Compile Include="Servicios\UserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +256,7 @@
     <Content Include="Content\leon.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\PiggygifWeb.gif" />
+    <Content Include="Content\pile_of_angry_birds_by_gav_imp-d4b2xol.png" />
     <Content Include="Content\quiz.css" />
     <Content Include="Content\RedAnimationLoop.gif" />
     <Content Include="Content\Red_happy.gif" />
@@ -338,8 +343,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711170609464_newMigration.resx">
-      <DependentUpon>201711170609464_newMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711200626075_NewMigration.resx">
+      <DependentUpon>201711200626075_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

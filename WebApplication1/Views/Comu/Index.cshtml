@@ -15,7 +15,10 @@
             <script language="javascript" src="~/Content/temporizador.js"></script>
             <link href="~/Content/bootstrap.css" rel="stylesheet" />
             <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+            <link href="~/Content/quiz.css" rel="stylesheet" />
             <link href="~/Content/b1.css" rel="stylesheet" />
+            <script src="~/Content/quiz.js"></script>
+            <script src="~/Content/questions.js"></script>
             <div>
 
             </div>
@@ -25,10 +28,11 @@
                             var cont = document.getElementById('quizContainer');
                             var img = document.getElementById('img');
                             var imgs = document.getElementById('imgs');
-                            var results = document.getElementById('results');
+                            var result = document.getElementById('results');
                             var nextButton = document.getElementById('nextButton');
                             var com = document.getElementById('Comprob');
                             var pds = document.getElementById('pds');
+                            var id01 = document.getElementById('id01');
                        var id = @ViewBag.dx;
                        var sc =@ViewBag.score;
                        id++;
@@ -37,8 +41,9 @@
                            window.location.href = '/Comu/Index?idx=' + id + '&&score=' + score;
                        }
                        if (id === 10) {
+
                                 cont.style.display = 'none';
-                                results.style.display = '';
+                                result.style.display = '';
                                 com.style.display = '';
                                 pds.style.display = '';
                                 if (score > 10) {
@@ -67,11 +72,11 @@
                         function ct() {
                             var cont = document.getElementById('quizContainer');
                             var img = document.getElementById('img');
-                            var pds = document.getElementById('pds');
                             var imgs = document.getElementById('imgs');
-                            var results = document.getElementById('results');
+                            var result = document.getElementById('results');
                             var resp =@Html.DisplayFor(model => Model.Respuesta);
                             var nextButton = document.getElementById('nextButton');
+                            var pds = document.getElementById('pds');
                             var selectedOption = document.querySelector('input[type=radio]:checked');
                             var com = document.getElementById('Comprob');
 
@@ -98,17 +103,15 @@
                                 nextButton.textContent = 'Finalizar';
                             }
                             if (id === 10) {
-                                
                                 cont.style.display = 'none';
-                                
-                                results.style.display = '';
+                                result.style.display = '';
                                 com.style.display = '';
                                 pds.style.display = '';
                                 if (score > 10) {
 
                                     com.textContent = 'Felicidades!';
 
-                                    results.textContent = 'Sacó ' + score;
+                                    results.textContent = 'Saco ' + score;
                                     img.style.display = '';
                                 }
 
@@ -116,7 +119,7 @@
 
                                     com.textContent = 'Lo sentimos';
 
-                                    results.textContent = 'Sacó ' + score;
+                                    results.textContent = 'Saco ' + score;
                                     imgs.style.display = '';
                                 }
                             }
@@ -152,10 +155,10 @@
 
                         cuenta();
                 </script>
-                <h3 id="question" class="question" style="font-size:30px;color:#000000; background-color:#2bde90">
+                <h3 id="question" class="question" style="font-size:30px;color:#000000">
                     @Html.DisplayFor(model => Model.pregunta)
                 </h3>
-                <label class="option" >
+                <label class="option">
                     <input type="radio" name="option" value="1">
                     @Html.DisplayFor(model => Model.opt1, new { id = "opt1" })
                 </label>
@@ -176,24 +179,22 @@
                 </label>
                 <button id="nextButton" class="next-btn" onclick="ct();">Siguiente</button>
             </div>
-            
-                    
-                    <label id="Comprob" class="container result" style="display: none; color:#000000; margin-top:-60%"></label>
-                    <div style="display:none" id="img">
-                        <img src="~/Content/aprobao.gif" width="70%" style="margin-top:2.5%;margin-left:115%" />
-                    </div>
-                    <div style="display:none" id="imgs">
-                        <img src="~/Content/reprobado.gif" width="70%" style="margin-top:2.5%;margin-left:115%" />
-                    </div>
-                    <div id="results" class="container result" style="display: none;color:#000000;"></div>
-                    <div id="pds" style="display:none;">
-                        <button id="nextButton" class="next-btn" style="float:left;" onclick="location.href='/SubMeny/Index'">Volver</button>
-                        <button id="nextButton" class="next-btn" style="float:right;" onclick="location.href='/Comu/Index'">Reintentar</button>
-                    </div>
-                    </div>
-                </div>
-                
+
+            <label id="Comprob" class="container result" style="display: none; color:#000000;"></label>
+            <div style="display:none" id="img">
+                <img src="~/Content/aprobao.gif" width="70%" style="margin-top:5%;margin-left:115%" />
+            </div>
+            <div style="display:none" id="imgs">
+                <img src="~/Content/reprobado.gif" width="70%" style="margin-top:5%;margin-left:115%" />
+            </div>
+            <div id="results" class="container result" style="display: none;color:#000000;"></div>
+            <div id="pds" style="display:none;">
+                <button id="nextButton" class="next-btn" style="float:left;" onclick="location.href='/SubMeny/Index'">Volver</button>
+                <button id="nextButton" class="next-btn" style="float:right;" onclick="location.href='/Comu/Index'">Reintentar</button>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>
-
