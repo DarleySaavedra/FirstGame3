@@ -33,6 +33,7 @@
                             var com = document.getElementById('Comprob');
                             var pds = document.getElementById('pds');
                             var id01 = document.getElementById('id01');
+                            var trf = document.getElementById('bl01');
                        var id = @ViewBag.dx;
                        var sc =@ViewBag.score;
                        id++;
@@ -47,7 +48,7 @@
                                 com.style.display = '';
                                 pds.style.display = '';
                                 if (score > 10) {
-
+                                    trf.style.display = 'block';
                                     com.textContent = 'Felicidades!';
 
                                     results.textContent = 'Saco ' + score;
@@ -79,6 +80,7 @@
                             var pds = document.getElementById('pds');
                             var selectedOption = document.querySelector('input[type=radio]:checked');
                             var com = document.getElementById('Comprob');
+                            var trf = document.getElementById('bl01');
 
                             if (!selectedOption) {
                                 alert('Por favor, elija una opción');
@@ -108,7 +110,7 @@
                                 com.style.display = '';
                                 pds.style.display = '';
                                 if (score > 10) {
-
+                                    trf.style.display = 'block';
                                     com.textContent = 'Felicidades!';
 
                                     results.textContent = 'Saco ' + score;
@@ -192,6 +194,15 @@
                                 <button id="nextButton" class="next-btn" style="float:left;" onclick="location.href='/SubMeny/Index'">Volver</button>
                                 <button id="nextButton" class="next-btn" style="float:right;" onclick="location.href='/Mate/Index'">Reintentar</button>
                             </div>
+            <div class="modal" id="bl01">
+                <div class="modal-content" style="width:520px; height:350px; ">
+                    <div class="modal-body">
+                        <center><img src="~/Content/copa.png" width="50%" /></center>
+                        <br />
+                        <center><input type="submit" value="ACEPTAR" class="btn btn-block" style="background-color:#ae5151; width:30%" onclick="document.getElementById('bl01').style.display = 'none';"></input></center>
+                    </div>
+                </div>
+            </div>
                             </div>
                         </div>
                      

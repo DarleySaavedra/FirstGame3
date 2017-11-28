@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace WebApplication1.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ComuController : Controller
     {
         
