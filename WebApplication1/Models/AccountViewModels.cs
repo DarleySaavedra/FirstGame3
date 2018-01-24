@@ -74,8 +74,10 @@ namespace WebApplication1.Models
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
+        
+          
 
-        public int? score { get; set; }
+        
 
         //[DataType(DataType.Password)]
         //[Display(Name = "Confirmar contraseña")]
